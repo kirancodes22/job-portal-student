@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer | CareerConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .analyzer-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .upload-section {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border: 3px dashed #6C5CE7;
+            transition: all 0.3s;
+        }
+        
+        .upload-section:hover {
+            border-color: #00CEC9;
+            background: #f8f9ff;
+        }
+        
+        .upload-icon {
+            font-size: 5rem;
+            background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(135deg, #6C5CE7 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(108,92,231,0.3);
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.5);
+        }
+        
+        .results-section {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            position: relative;
+        }
+        
+        .score-high { background: linear-gradient(135deg, #00b894, #00cec9); }
+        .score-medium { background: linear-gradient(135deg, #fdcb6e, #f39c12); }
+        .score-low { background: linear-gradient(135deg, #e17055, #d63031); }
+        
+        .suggestions-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .suggestion-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #6C5CE7;
+        }
+        
+        .suggestion-item.strength {
+            border-left-color: #00b894;
+        }
+        
+        .suggestion-item.improvement {
+            border-left-color: #e17055;
+        }
+        
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .keyword-tag {
+            background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .loading-animation {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f0f0f0;
+            border-top: 5px solid #6C5CE7;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 CareerConnect</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+                <a href="resume-analyzer.html" class="nav-link active">📝 Resume Analyzer</a>
+                <a href="interview-prep.html" class="nav-link">🎤 Interview Prep</a>
+                <button class="btn-nav">👤 Rahul Verma</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="analyzer-container">
+        <h1 style="text-align:center; color:#2D3436; margin-bottom:10px;">🤖 AI Resume Analyzer</h1>
+        <p style="text-align:center; color:#666; margin-bottom:30px;">Get instant ATS compatibility score and personalized improvement suggestions</p>
+        
+        <!-- Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon">📄</div>
+            <h2 style="margin-bottom:15px;">Upload Your Resume</h2>
+            <p style="color:#666; margin-bottom:25px;">Supports PDF, DOCX formats (Max 5MB)</p>
+            <input type="file" id="resumeFile" accept=".pdf,.docx" style="display:none;">
+            <button class="upload-btn" onclick="document.getElementById('resumeFile').click()">
+                📁 Choose File
+            </button>
+            <p id="fileName" style="margin-top:15px; color:#6C5CE7; font-weight:600;"></p>
+        </div>
+        
+        <!-- Loading -->
+        <div class="loading-animation" id="loadingAnimation">
+            <div class="spinner"></div>
+            <p style="color:#666;">Analyzing your resume with AI...</p>
+        </div>
+        
+        <!-- Results -->
+        <div class="results-section" id="resultsSection">
+            <div class="result-card">
+                <h3 style="margin-bottom:15px;">📊 Overall Score</h3>
+                <div class="score-circle score-high" id="overallScore">85</div>
+                <p style="color:#666;">Out of 100</p>
+            </div>
+            <div class="result-card">
+                <h3 style="margin-bottom:15px;">🎯 ATS Compatibility</h3>
+                <div class="score-circle score-medium" id="atsScore">78</div>
+                <p style="color:#666;">Percentage</p>
+            </div>
+            <div class="result-card">
+                <h3 style="margin-bottom:15px;">📏 Format Score</h3>
+                <div class="score-circle score-high" id="formatScore">90</div>
+                <p style="color:#666;">Layout & Structure</p>
+            </div>
+        </div>
+        
+        <!-- Suggestions -->
+        <div class="suggestions-card" id="suggestionsCard" style="display:none;">
+            <h2 style="margin-bottom:20px;">💡 AI Suggestions</h2>
+            
+            <h3 style="color:#00b894; margin-bottom:10px;">✅ Strengths</h3>
+            <div id="strengthsList"></div>
+            
+            <h3 style="color:#e17055; margin:20px 0 10px;">⚠️ Areas for Improvement</h3>
+            <div id="improvementsList"></div>
+            
+            <h3 style="color:#6C5CE7; margin:20px 0 10px;">🔑 Recommended Keywords</h3>
+            <div class="keyword-tags" id="keywordsList"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('resumeFile').addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            document.getElementById('fileName').textContent = '📎 ' + file.name;
+            
+            // Show loading
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('loadingAnimation').style.display = 'block';
+            
+            // Simulate AI analysis (in production, upload to server)
+            setTimeout(async () => {
+                const formData = new FormData();
+                formData.append('resume', file);
+                
+                try {
+                    const response = await fetch('/api/analyze-resume', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const analysis = await response.json();
+                    
+                    // Hide loading, show results
+                    document.getElementById('loadingAnimation').style.display = 'none';
+                    document.getElementById('resultsSection').style.display = 'grid';
+                    document.getElementById('suggestionsCard').style.display = 'block';
+                    
+                    // Update scores
+                    document.getElementById('overallScore').textContent = analysis.score;
+                    document.getElementById('atsScore').textContent = analysis.atsCompatibility;
+                    document.getElementById('formatScore').textContent = analysis.formatScore;
+                    
+                    // Color code scores
+                    updateScoreColor('overallScore', analysis.score);
+                    updateScoreColor('atsScore', analysis.atsCompatibility);
+                    updateScoreColor('formatScore', analysis.formatScore);
+                    
+                    // Show strengths
+                    document.getElementById('strengthsList').innerHTML = analysis.strengths.map(s => `
+                        <div class="suggestion-item strength">
+                            <span style="font-size:1.5rem;">✅</span>
+                            <p>${s}</p>
+                        </div>
+                    `).join('');
+                    
+                    // Show improvements
+                    document.getElementById('improvementsList').innerHTML = analysis.improvements.map(s => `
+                        <div class="suggestion-item improvement">
+                            <span style="font-size:1.5rem;">📌</span>
+                            <p>${s}</p>
+                        </div>
+                    `).join('');
+                    
+                    // Show keywords
+                    document.getElementById('keywordsList').innerHTML = analysis.keywordSuggestions.map(k => `
+                        <span class="keyword-tag">${k}</span>
+                    `).join('');
+                    
+                } catch (error) {
+                    document.getElementById('loadingAnimation').style.display = 'none';
+                    document.getElementById('uploadSection').style.display = 'block';
+                    alert('Analysis failed. Please try again.');
+                }
+            }, 2000);
+        });
+        
+        function updateScoreColor(elementId, score) {
+            const element = document.getElementById(elementId);
+            element.className = 'score-circle';
+            if (score >= 80) element.classList.add('score-high');
+            else if (score >= 60) element.classList.add('score-medium');
+            else element.classList.add('score-low');
+        }
+    </script>
+</body>
+</html>

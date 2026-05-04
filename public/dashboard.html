@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CareerConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar (same as main page) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 CareerConnect</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="dashboard.html" class="nav-link active">📊 Dashboard</a>
+                <a href="resume-analyzer.html" class="nav-link">📝 Resume Analyzer</a>
+                <a href="interview-prep.html" class="nav-link">🎤 Interview Prep</a>
+                <a href="company-profile.html" class="nav-link">🏢 Companies</a>
+                <button class="btn-nav">👤 Rahul Verma</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Stats Overview -->
+        <section class="stats-row">
+            <div class="stat-box stat-total">
+                <i class="fas fa-paper-plane"></i>
+                <div>
+                    <h3 id="totalApps">0</h3>
+                    <p>Total Applications</p>
+                </div>
+            </div>
+            <div class="stat-box stat-shortlisted">
+                <i class="fas fa-star"></i>
+                <div>
+                    <h3 id="shortlisted">0</h3>
+                    <p>Shortlisted</p>
+                </div>
+            </div>
+            <div class="stat-box stat-interview">
+                <i class="fas fa-users"></i>
+                <div>
+                    <h3 id="interview">0</h3>
+                    <p>In Interview</p>
+                </div>
+            </div>
+            <div class="stat-box stat-offered">
+                <i class="fas fa-trophy"></i>
+                <div>
+                    <h3 id="offered">0</h3>
+                    <p>Offered</p>
+                </div>
+            </div>
+            <div class="stat-box stat-rate">
+                <i class="fas fa-chart-line"></i>
+                <div>
+                    <h3 id="successRate">0%</h3>
+                    <p>Success Rate</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kanban Board -->
+        <section class="kanban-section">
+            <h2>📋 Application Pipeline</h2>
+            <div class="kanban-board">
+                <div class="kanban-column" data-status="applied">
+                    <div class="column-header">📄 Applied</div>
+                    <div class="column-body" id="col-applied"></div>
+                </div>
+                <div class="kanban-column" data-status="shortlisted">
+                    <div class="column-header">⭐ Shortlisted</div>
+                    <div class="column-body" id="col-shortlisted"></div>
+                </div>
+                <div class="kanban-column" data-status="interview">
+                    <div class="column-header">🎤 Interview</div>
+                    <div class="column-body" id="col-interview"></div>
+                </div>
+                <div class="kanban-column" data-status="offered">
+                    <div class="column-header">🏆 Offered</div>
+                    <div class="column-body" id="col-offered"></div>
+                </div>
+                <div class="kanban-column" data-status="rejected">
+                    <div class="column-header">❌ Rejected</div>
+                    <div class="column-body" id="col-rejected"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Updates -->
+        <section class="updates-section">
+            <h2>🔔 Recent Activity</h2>
+            <div id="activityFeed" class="activity-feed"></div>
+        </section>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Prep | CareerConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .interview-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .mode-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+        }
+        
+        .mode-card:hover {
+            transform: translateY(-5px);
+            border-color: #6C5CE7;
+            box-shadow: 0 15px 40px rgba(108,92,231,0.2);
+        }
+        
+        .mode-card.selected {
+            border-color: #6C5CE7;
+            background: #f8f7ff;
+        }
+        
+        .mode-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .question-area {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .timer {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            color: #6C5CE7;
+            margin: 20px 0;
+        }
+        
+        .timer.warning {
+            color: #e17055;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .answer-box {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            resize: vertical;
+            margin: 20px 0;
+            font-family: inherit;
+        }
+        
+        .answer-box:focus {
+            outline: none;
+            border-color: #6C5CE7;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6C5CE7, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.3);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        
+        .self-rating {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .star-btn {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: none;
+            border: none;
+        }
+        
+        .star-btn:hover, .star-btn.active {
+            transform: scale(1.2);
+            color: #fdcb6e;
+        }
+        
+        .feedback-card {
+            background: linear-gradient(135deg, #f8f7ff, #fff);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #00b894;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #6C5CE7, #00CEC9);
+            transition: width 0.5s;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 CareerConnect</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+                <a href="resume-analyzer.html" class="nav-link">📝 Resume Analyzer</a>
+                <a href="interview-prep.html" class="nav-link active">🎤 Interview Prep</a>
+                <button class="btn-nav">👤 Rahul Verma</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="interview-container">
+        <h1 style="text-align:center; color:#2D3436; margin-bottom:10px;">🎤 Virtual Interview Simulator</h1>
+        <p style="text-align:center; color:#666; margin-bottom:30px;">Practice with timed questions and self-assessment tools</p>
+        
+        <!-- Mode Selection -->
+        <div class="mode-selector" id="modeSelector">
+            <div class="mode-card" onclick="startInterview('technical')">
+                <div class="mode-icon">💻</div>
+                <h3>Technical Round</h3>
+                <p>Data Structures, Algorithms, System Design</p>
+            </div>
+            <div class="mode-card" onclick="startInterview('behavioral')">
+                <div class="mode-icon">🤝</div>
+                <h3>Behavioral Round</h3>
+                <p>Leadership, Teamwork, Problem Solving</p>
+            </div>
+            <div class="mode-card" onclick="startInterview('hr')">
+                <div class="mode-icon">🎯</div>
+                <h3>HR Round</h3>
+                <p>Career Goals, Salary, Culture Fit</p>
+            </div>
+        </div>
+        
+        <!-- Question Area -->
+        <div class="question-area" id="questionArea">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+            
+            <h3 id="questionNumber" style="color:#666;">Question 1 of 5</h3>
+            <h2 id="questionText" style="margin:20px 0; color:#2D3436;"></h2>
+            
+            <div class="timer" id="timer">02:00</div>
+            
+            <textarea class="answer-box" id="answerBox" placeholder="Type your answer here... Think out loud!"></textarea>
+            
+            <div class="btn-group">
+                <button class="btn-secondary" onclick="skipQuestion()">⏭️ Skip</button>
+                <button class="btn-primary" onclick="submitAnswer()">✅ Submit Answer</button>
+            </div>
+            
+            <div id="selfRatingArea" style="display:none;">
+                <h3 style="text-align:center; margin-top:30px;">🌟 Self-Rate Your Answer</h3>
+                <div class="self-rating" id="starRating">
+                    <button class="star-btn" onclick="rateAnswer(1)">⭐</button>
+                    <button class="star-btn" onclick="rateAnswer(2)">⭐</button>
+                    <button class="star-btn" onclick="rateAnswer(3)">⭐</button>
+                    <button class="star-btn" onclick="rateAnswer(4)">⭐</button>
+                    <button class="star-btn" onclick="rateAnswer(5)">⭐</button>
+                </div>
+                <div class="feedback-card" id="aiFeedback"></div>
+                <button class="btn-primary" onclick="nextQuestion()" style="margin-top:20px;">Next Question ➡️</button>
+            </div>
+        </div>
+        
+        <!-- Results -->
+        <div id="resultsArea" style="display:none; text-align:center; padding:40px; background:white; border-radius:20px;">
+            <div style="font-size:4rem;">🎉</div>
+            <h2>Interview Complete!</h2>
+            <div style="font-size:3rem; font-weight:800; color:#6C5CE7; margin:20px 0;" id="finalScore">4.2/5</div>
+            <p style="color:#666;">Average Self-Rating</p>
+            <div style="margin-top:20px;">
+                <button class="btn-primary" onclick="location.reload()">🔄 Practice Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = {
+            technical: [
+                "Explain the difference between an array and a linked list. When would you use each?",
+                "What is a closure in JavaScript? Provide an example.",
+                "How would you design a URL shortening service like bit.ly?",
+                "Explain the concept of RESTful APIs and their principles.",
+                "What is the difference between SQL and NoSQL databases? Give use cases."
+            ],
+            behavioral: [
+                "Tell me about a time you faced a difficult challenge and how you overcame it.",
+                "Describe a situation where you had to work with a difficult team member.",
+                "Give an example of a time you showed leadership skills.",
+                "How do you handle tight deadlines and pressure?",
+                "Tell me about a failure and what you learned from it."
+            ],
+            hr: [
+                "Where do you see yourself in 5 years?",
+                "Why should we hire you over other candidates?",
+                "What are your salary expectations?",
+                "How do you handle work-life balance?",
+                "What do you know about our company?"
+            ]
+        };
+        
+        let currentMode = '';
+        let currentQuestionIndex = 0;
+        let timerInterval = null;
+        let timeLeft = 120;
+        let ratings = [];
+        
+        function startInterview(mode) {
+            currentMode = mode;
+            currentQuestionIndex = 0;
+            ratings = [];
+            
+            document.getElementById('modeSelector').style.display = 'none';
+            document.getElementById('questionArea').style.display = 'block';
+            document.getElementById('resultsArea').style.display = 'none';
+            
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            const modeQuestions = questions[currentMode];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${modeQuestions.length}`;
+            document.getElementById('questionText').textContent = modeQuestions[currentQuestionIndex];
+            document.getElementById('answerBox').value = '';
+            document.getElementById('selfRatingArea').style.display = 'none';
+            document.getElementById('progressFill').style.width = `${(currentQuestionIndex / modeQuestions.length) * 100}%`;
+            
+            resetTimer();
+            startTimer();
+        }
+        
+        function startTimer() {
+            timeLeft = 120;
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 30) {
+                    document.getElementById('timer').classList.add('warning');
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitAnswer();
+                }
+            }, 1000);
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            document.getElementById('timer').classList.remove('warning');
+        }
+        
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function submitAnswer() {
+            resetTimer();
+            document.getElementById('selfRatingArea').style.display = 'block';
+            document.getElementById('timer').style.display = 'none';
+        }
+        
+        function rateAnswer(rating) {
+            ratings.push(rating);
+            
+            // Highlight stars
+            document.querySelectorAll('.star-btn').forEach((btn, index) => {
+                btn.classList.toggle('active', index < rating);
+            });
+            
+            // Show AI feedback
+            const feedbacks = {
+                1: "Keep practicing! Focus on structuring your answer using the STAR method (Situation, Task, Action, Result).",
+                2: "Good start! Try to be more specific with examples and quantify your achievements.",
+                3: "Solid answer! Consider adding more technical details to strengthen your response.",
+                4: "Excellent answer! You communicated clearly. Minor improvement: include metrics where possible.",
+                5: "Outstanding! You demonstrated deep understanding and excellent communication skills."
+            };
+            
+            document.getElementById('aiFeedback').innerHTML = `
+                <strong>🤖 AI Feedback:</strong>
+                <p style="margin-top:10px;">${feedbacks[rating]}</p>
+            `;
+        }
+        
+        function nextQuestion() {
+            const modeQuestions = questions[currentMode];
+            
+            if (currentQuestionIndex < modeQuestions.length - 1) {
+                currentQuestionIndex++;
+                document.getElementById('timer').style.display = 'block';
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+        
+        function skipQuestion() {
+            ratings.push(0);
+            nextQuestion();
+        }
+        
+        function showResults() {
+            document.getElementById('questionArea').style.display = 'none';
+            document.getElementById('resultsArea').style.display = 'block';
+            
+            const avgRating = ratings.filter(r => r > 0).length > 0
+                ? (ratings.filter(r => r > 0).reduce((a, b) => a + b, 0) / ratings.filter(r => r > 0).length).toFixed(1)
+                : 'N/A';
+            
+            document.getElementById('finalScore').textContent = avgRating + '/5';
+        }
+    </script>
+</body>
+</html>

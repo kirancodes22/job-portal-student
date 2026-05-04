@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerConnect - Student Job Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ============ NAVIGATION ============ -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 CareerConnect</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+                <a href="resume-analyzer.html" class="nav-link">📝 Resume Analyzer</a>
+                <a href="interview-prep.html" class="nav-link">🎤 Interview Prep</a>
+                <a href="company-profile.html" class="nav-link">🏢 Companies</a>
+                <button class="btn-nav">👤 Student Portal</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero">
+        <h1>Find Your Dream Internship & Job</h1>
+        <p>AI-powered matching • Real-time updates • Career guidance all in one place</p>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Active Jobs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2,000+</div>
+                <div class="stat-label">Partner Companies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10,000+</div>
+                <div class="stat-label">Students Placed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SEARCH BAR ============ -->
+    <section class="search-section">
+        <div class="search-card">
+            <div class="search-grid">
+                <input type="text" id="searchInput" class="search-input" 
+                       placeholder="🔍 Search by job title, skill, or company...">
+                <select id="filterType" class="search-input">
+                    <option value="all">📋 All Types</option>
+                    <option value="Internship">🎓 Internship</option>
+                    <option value="Full-time">💼 Full-time</option>
+                    <option value="Part-time">⏰ Part-time</option>
+                    <option value="Remote">🏠 Remote</option>
+                </select>
+                <select class="search-input">
+                    <option>📍 All Locations</option>
+                    <option>Bangalore</option>
+                    <option>Mumbai</option>
+                    <option>Delhi NCR</option>
+                    <option>Hyderabad</option>
+                    <option>Remote</option>
+                </select>
+                <button class="btn-nav" onclick="loadJobs()">🔍 Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ JOB LISTINGS ============ -->
+    <section class="jobs-section">
+        <h2 class="section-title">✨ Recommended for You</h2>
+        <div class="jobs-grid" id="jobsContainer">
+            <!-- Jobs loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features-section">
+        <h2 class="section-title" style="text-align:center;">🌟 Why Choose CareerConnect?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon icon-ai">🤖</div>
+                <h3>AI Resume Analyzer</h3>
+                <p>Get instant ATS score and personalized improvement suggestions</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-match">🎯</div>
+                <h3>Smart Matching</h3>
+                <p>See match percentages and skill gaps before applying</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-interview">🎤</div>
+                <h3>Interview Simulator</h3>
+                <p>Practice with timed questions and self-assessment tools</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-track">📊</div>
+                <h3>Visual Tracking</h3>
+                <p>Kanban board view of all your applications in real-time</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ APPLY MODAL ============ -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>📝 Quick Apply</h2>
+            <p id="applyJobTitle" style="color:#666; margin-bottom:20px;"></p>
+            <form id="applicationForm">
+                <input type="hidden" id="applyJobId">
+                <input type="hidden" id="applyCompany">
+                <div class="form-group">
+                    <label>Why should you be hired?</label>
+                    <textarea id="coverLetter" rows="4" placeholder="Highlight your relevant skills and experience..." required></textarea>
+                </div>
+                <button type="submit" class="apply-btn">🚀 Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div id="toastContainer"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

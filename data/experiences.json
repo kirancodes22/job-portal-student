@@ -1,0 +1,22 @@
+[
+  {
+    "id": 201,
+    "company": "Microsoft",
+    "role": "Full Stack Developer",
+    "studentName": "Anonymous",
+    "experience": "The interview had three rounds: DSA, System Design, and HR. Focus on tree/graph algorithms and be prepared to discuss your projects in depth.",
+    "difficulty": 4,
+    "helpful": 12,
+    "date": "2024-01-10T00:00:00Z"
+  },
+  {
+    "id": 202,
+    "company": "Amazon",
+    "role": "Data Science Intern",
+    "studentName": "Anonymous",
+    "experience": "Questions included Python coding, SQL queries, and a case study on recommendation systems. The bar raiser round was challenging.",
+    "difficulty": 4,
+    "helpful": 8,
+    "date": "2024-01-12T00:00:00Z"
+  }
+]

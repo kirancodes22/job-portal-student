@@ -1,0 +1,24 @@
+{
+  "id": 1777886515568,
+  "studentId": 1,
+  "studentName": "Rahul Verma",
+  "jobId": 1,
+  "company": "Google",
+  "coverLetter": "i want to learn new things in deep and details\n",
+  "skills": [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Python",
+    "SQL"
+  ],
+  "status": "applied",
+  "appliedDate": "2026-05-04T09:21:55.568Z",
+  "updates": [
+    {
+      "status": "applied",
+      "date": "2026-05-04T09:21:55.568Z",
+      "note": "Application submitted"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies | CareerConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .companies-container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .company-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .company-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .company-cover {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        
+        .cover-google { background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335); }
+        .cover-microsoft { background: linear-gradient(135deg, #00A4EF, #7FBA00, #FFB900, #F25022); }
+        .cover-amazon { background: linear-gradient(135deg, #FF9900, #232F3E); }
+        .cover-netflix { background: linear-gradient(135deg, #E50914, #221F1F); }
+        .cover-stripe { background: linear-gradient(135deg, #635BFF, #00D924); }
+        .cover-figma { background: linear-gradient(135deg, #F24E1E, #A259FF, #1ABCFE); }
+        
+        .company-info {
+            padding: 25px;
+        }
+        
+        .company-stats {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .company-stat {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .company-stat h4 {
+            color: #6C5CE7;
+            font-size: 1.3rem;
+        }
+        
+        .review-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+        
+        .rating-stars {
+            color: #fdcb6e;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 CareerConnect</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+                <a href="resume-analyzer.html" class="nav-link">📝 Resume Analyzer</a>
+                <a href="interview-prep.html" class="nav-link">🎤 Interview Prep</a>
+                <a href="company-profile.html" class="nav-link active">🏢 Companies</a>
+                <button class="btn-nav">👤 Rahul Verma</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="companies-container">
+        <h1 style="text-align:center; color:#2D3436; margin-bottom:10px;">🏢 Partner Companies</h1>
+        <p style="text-align:center; color:#666; margin-bottom:30px;">Explore company cultures, reviews, and opportunities</p>
+        
+        <div class="company-grid">
+            <!-- Google -->
+            <div class="company-card">
+                <div class="company-cover cover-google">G</div>
+                <div class="company-info">
+                    <h2>Google</h2>
+                    <p style="color:#666;">Technology • Mountain View, CA</p>
+                    <div class="company-stats">
+                        <div class="company-stat">
+                            <h4>45</h4>
+                            <small>Open Positions</small>
+                        </div>
+                        <div class="company-stat">
+                            <h4>4.5</h4>
+                            <small>Rating</small>
+                        </div>
+                        <div class="company-stat">
+                            <h4>2,000+</h4>
+                            <small>Reviews</small>
+                        </div>
+                    </div>
+                    <p>"Innovative culture with amazing perks. Great for learning and growth."</p>
+                    <div class="review-card">
+                        <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+                        <p>"The internship program is world-class. Mentorship and real projects from day one."</p>
+                        <small style="color:#999;">- Anonymous Intern, 2024</small>
+                    </div>
+                    <a href="index.html" class="apply-btn" style="display:block; text-align:center; margin-top:15px; text-decoration:none;">
+                        View Open Positions
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Microsoft -->
+            <div class="company-card">
+                <div class="company-cover cover-microsoft">M</div>
+                <div class="company-info">
+                    <h2>Microsoft</h2>
+                    <p style="color:#666;">Technology • Redmond, WA</p>
+                    <div class="company-stats">
+                        <div class="company-stat">
+                            <h4>78</h4>
+                            <small>Open Positions</small>
+                        </div>
+                        <div class="company-stat">
+                            <h4>4.3</h4>
+                            <small>Rating</small>
+                        </div>
+                        <div class="company-stat">
+                            <h4>3,500+</h4>
+                            <small>Reviews</small>
+                        </div>
+                    </div>
+                    <p>"Excellent work-life balance. Strong focus on employee development."</p>
+                    <div class="review-card">
+                        <div class="rating-stars">⭐⭐⭐⭐</div>
+                        <p>"Great culture, collaborative environment. The interview process was thorough but fair."</p>
+                        <small style="color:#999;">- Anonymous SDE Intern, 2024</small>
+                    </div>
+                    <a href="index.html" class="apply-btn" style="display:block; text-align:center; margin-top:15px; text-decoration:none;">
+                        View Open Positions
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Amazon -->
+            <div class="company-card">
+                <div class="company-cover cover-amazon">A</div>
+                <div class="company-info">
+                    <h2>Amazon</h2>
+                    <p style="color:#666;">E-commerce • Seattle, WA</p>
+                    <div class="company-stats">
+                        <div class="company-stat">
+                            <h4>120</h4>
+                            <small>Open Positions</small>
+                        </div>
+                        <div class="company-stat">
+                            <h4>4.0</h4>
+                            <small>Rating</small>
+                        </div>
+                        <div class="company-stat">
+                            <h4>5,000+</h4>
+                            <small>Reviews</small>
+                        </div>
+                    </div>
+                    <p>"Fast-paced environment. Ownership from day one. Great for ambitious students."</p>
+                    <div class="review-card">
+                        <div class="rating-stars">⭐⭐⭐⭐</div>
+                        <p>"The bar raiser round was challenging but fair. Focus on leadership principles."</p>
+                        <small style="color:#999;">- Anonymous Data Science Intern, 2024</small>
+                    </div>
+                    <a href="index.html" class="apply-btn" style="display:block; text-align:center; margin-top:15px; text-decoration:none;">
+                        View Open Positions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer Intern",
+    "company": "Google",
+    "location": "Bangalore",
+    "salary": "₹45,000/month",
+    "type": "Internship",
+    "requiredSkills": [
+      "React",
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "description": "Join our team to build next-gen web applications",
+    "postedDate": "2024-01-15",
+    "applications": 46,
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "title": "Full Stack Developer",
+    "company": "Microsoft",
+    "location": "Hyderabad",
+    "salary": "₹12-18 LPA",
+    "type": "Full-time",
+    "requiredSkills": [
+      "Node.js",
+      "React",
+      "MongoDB",
+      "Python",
+      "AWS"
+    ],
+    "description": "Build scalable cloud solutions",
+    "postedDate": "2024-01-14",
+    "applications": 78,
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "title": "Data Science Intern",
+    "company": "Amazon",
+    "location": "Mumbai",
+    "salary": "₹50,000/month",
+    "type": "Internship",
+    "requiredSkills": [
+      "Python",
+      "Machine Learning",
+      "SQL",
+      "Statistics"
+    ],
+    "description": "Work on real-world ML problems",
+    "postedDate": "2024-01-13",
+    "applications": 120,
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "title": "UI/UX Designer",
+    "company": "Figma",
+    "location": "Remote",
+    "salary": "₹8-15 LPA",
+    "type": "Remote",
+    "requiredSkills": [
+      "Figma",
+      "UI Design",
+      "User Research",
+      "Prototyping"
+    ],
+    "description": "Design beautiful, intuitive interfaces",
+    "postedDate": "2024-01-12",
+    "applications": 56,
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "title": "DevOps Intern",
+    "company": "Netflix",
+    "location": "Bangalore",
+    "salary": "₹40,000/month",
+    "type": "Internship",
+    "requiredSkills": [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Linux"
+    ],
+    "description": "Help us scale our streaming platform",
+    "postedDate": "2024-01-11",
+    "applications": 34,
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "title": "Backend Developer",
+    "company": "Stripe",
+    "location": "Delhi NCR",
+    "salary": "₹15-25 LPA",
+    "type": "Full-time",
+    "requiredSkills": [
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "Redis"
+    ],
+    "description": "Build payment infrastructure for millions",
+    "postedDate": "2024-01-10",
+    "applications": 92,
+    "status": "active"
+  }
+]

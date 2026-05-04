@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "name": "Rahul Verma",
+    "email": "rahul@student.edu",
+    "password": "student123",
+    "role": "student",
+    "skills": ["JavaScript", "React", "Node.js", "Python", "SQL"],
+    "education": "B.Tech Computer Science",
+    "college": "Delhi Technological University",
+    "graduationYear": 2026,
+    "resumeUrl": "",
+    "profilePicture": ""
+  },
+  {
+    "id": 2,
+    "name": "Priya Singh",
+    "email": "priya@student.edu",
+    "password": "student123",
+    "role": "student",
+    "skills": ["Python", "Machine Learning", "TensorFlow", "Data Analysis", "SQL"],
+    "education": "M.Sc Data Science",
+    "college": "IIT Bombay",
+    "graduationYear": 2025,
+    "resumeUrl": "",
+    "profilePicture": ""
+  },
+  {
+    "id": 3,
+    "name": "Arjun Mehta",
+    "email": "arjun@student.edu",
+    "password": "student123",
+    "role": "student",
+    "skills": ["Java", "Spring Boot", "Docker", "AWS", "PostgreSQL"],
+    "education": "B.Tech Information Technology",
+    "college": "NIT Trichy",
+    "graduationYear": 2027,
+    "resumeUrl": "",
+    "profilePicture": ""
+  },
+  {
+    "id": 100,
+    "name": "Google Inc.",
+    "email": "hr@google.com",
+    "password": "company123",
+    "role": "company",
+    "companyName": "Google",
+    "industry": "Technology",
+    "website": "https://careers.google.com",
+    "description": "Building products that make the world a better place.",
+    "logo": ""
+  }
+]
