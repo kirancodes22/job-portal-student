@@ -125,3 +125,14 @@ function getStatusEmoji(status) {
     };
     return map[status] || '📌';
 }
+
+async function loadJobs() {
+  const { data, error } = await window.supabaseClient
+    .from("jobs")
+    .select("*");
+
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
+}
+
+loadJobs();
